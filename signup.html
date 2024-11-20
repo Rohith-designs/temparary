@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <style>
+        /* Basic reset for margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Container for the form */
+        .container {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 4px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #124803;
+            border: none;
+            border-radius: 4px;
+            color: #FFF;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .message-bottom {
+            color: red;
+            font-size: 14px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+
+        .message-success {
+            color: green;
+        }
+        .header {
+            background-color: #124803;
+            color: white;
+            font-size: 24px;
+            padding: 2.5%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure header stays on top */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header span {
+            font-size: 250%;
+            margin-left: 2%;
+        }
+
+        .header .links {
+            display: flex;
+        }
+
+        .header .links a {
+            text-decoration: none;
+            color: white;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+ <div class="header">
+        <span>ShineSquad</span>
+        <span class="links">
+            <a href="#">Home</a>
+            <a href="#">Book Online</a>
+        </span>
+    </div>
+
+    <div class="container">
+        <h2>Signup Form</h2>
+        <form id="signupForm" action="sign.php" method="POST"> <!-- Linked to sign.php -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+
+    <div id="message" class="message-bottom"></div>
+
+    <script>
+        const form = document.getElementById('signupForm');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm_password');
+        const messageDiv = document.getElementById('message');
+
+        form.addEventListener('submit', function(e) {
+            // Basic front-end password match validation
+            if (password.value !== confirmPassword.value) {
+                e.preventDefault();
+                messageDiv.style.color = 'red';
+                messageDiv.innerText = 'Passwords do not match';
+                messageDiv.style.display = 'block';
+            } 
+        });
+    </script>
+</body>
+</html>

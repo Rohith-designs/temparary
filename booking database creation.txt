@@ -1,0 +1,23 @@
+CREATE TABLE bookings (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    first_name VARCHAR(100),
+
+    email VARCHAR(255),
+
+    phone VARCHAR(15),
+
+    location VARCHAR(255),
+
+    service VARCHAR(255),
+
+    message TEXT,
+
+    selected_date DATE,
+
+    selected_time VARCHAR(10),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);

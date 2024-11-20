@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ShineSquad</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .contact-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin: 20px;
+        }
+        .contact-container h1 {
+            color: #124803;
+            font-size: 34px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .contact-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-container label {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0 5px;
+        }
+        .contact-container input,
+        .contact-container textarea {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .contact-container input:focus,
+        .contact-container textarea:focus {
+            border-color: #124803;
+            outline: none;
+        }
+        .contact-container button {
+            background-color: #124803;
+            color: white;
+            padding: 14px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .contact-container button:hover {
+            background-color: #0d3c02;
+        }
+        .contact-container .message-submitted {
+            margin-top: 20px;
+            color: #124803;
+            font-size: 18px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+
+<div class="contact-container">
+    <h1>Contact Us</h1>
+    <form id="contactForm" onsubmit="submitContactForm(event)">
+        <label for="name">Name *</label>
+        <input type="text" id="name" placeholder="Your name" required>
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" placeholder="Your email" required>
+
+        <label for="message">Message *</label>
+        <textarea id="message" rows="5" placeholder="Your message" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+    <p class="message-submitted" id="messageSubmitted">Your message has been submitted!</p>
+</div>
+
+<script>
+    function submitContactForm(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        // Collect form data
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        // Create a mailto link
+        const mailtoLink = `mailto:shinesquadvijayawada@gmail.com?subject=Contact%20Us%20Message%20from%20${encodeURIComponent(name)}&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+
+        // Open the user's email client
+        window.location.href = mailtoLink;
+
+        // Display confirmation message
+        document.getElementById('messageSubmitted').style.display = 'block';
+
+        // Clear form fields
+        document.getElementById('contactForm').reset();
+    }
+</script>
+
+</body>
+</html>
